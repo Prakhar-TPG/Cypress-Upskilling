@@ -1,0 +1,8 @@
+{
+    "product_name_loc": ".inventory_item_name",
+    "product_price_loc": ".inventory_item_price",
+    "add_to_cart_button": ".btn.btn_primary.btn_small.btn_inventory",
+    "remove_button": "button[class='btn btn_secondary btn_small btn_inventory']"
+
+}
+  

@@ -1,0 +1,13 @@
+{
+    "Source": "Ben",
+    "Destination": "Ah",
+    
+    "Special_quota_name":[
+        "Family & Friends",
+        "Senior Citizen",
+        "Students",
+        "Unaccompanied Minor",
+        "Armed Forces",
+        "Govt. Employee"
+    ]
+}

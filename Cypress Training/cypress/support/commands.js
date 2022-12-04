@@ -157,18 +157,6 @@ Cypress.Commands.add('buttons_to_proceed_to_flightpage', (mylocator) => {
 
 Cypress.Commands.add('verifying_details_on_flightpage', (Flightpage_loc) => {       //verifying the details between the homepage and serached flightpage page
     
-    // Cypress.Commands.add('verifyLink', (dataObject) => {
-        // var dataObject = {
-        //     From_date: Departure_date,
-        //     To_date: return_Date,
-        //   };
-    //     //   cy.log(dataObject)
-        
-        // for (let i = 0; i < (dataObject).length; i++) {
-        //   cy.contains(dataObject[i], Object.keys(dataObject)[i])
-        //   cy.log(dataObject[i]) 
-        //   }
-
     cy.get(Flightpage_loc.Return_check_loc).eq(1).invoke('text').then(text4 => {
     Return_city = text4.split(' ')[5];
     
@@ -194,8 +182,8 @@ Cypress.Commands.add('verifying_details_on_flightpage', (Flightpage_loc) => {   
 
     expect(Travellers_selected).to.equal(Travellers_check_in_flight)
         
-        })
-        })
+    })
+    })
     })
     })   
 })

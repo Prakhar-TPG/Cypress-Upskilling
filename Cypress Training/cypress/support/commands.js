@@ -1,4 +1,3 @@
-// const dayjs = require('dayjs')
 import moment from 'moment';
 
 // ---------- Assignment on saucedemo website -----------

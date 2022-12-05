@@ -40,19 +40,5 @@ describe("CY Assignment 3", function () {
         cy.verifying_details_on_flightpage(this.flight_loc)
         cy.Count_Departure_flights(this.flight_loc)
         cy.Count_Returning_flights(this.flight_loc)
-    })
-
-    it("Oneway flight", function () {
-        
-        cy.selecting_the_flight_location(this.mylocator,this.flightdata)
-        cy.fetch_source_and_destination(this.mylocator)
-        cy.Select_from_date(this.mylocator)
-        // cy.special_benifts(this.mylocator)
-        cy.fetch_from_date(this.mylocator)
-        cy.No_of_passengers(this.mylocator)
-        // cy.buttons_to_proceed_to_flightpage(this.mylocator)
-        cy.get(this.mylocator.Search_flight_button_loc).click();
-        cy.verifying_details_on_flightpage(this.flight_loc)
-        cy.Count_Departure_flights(this.flight_loc)
-    })    
+    })   
 })

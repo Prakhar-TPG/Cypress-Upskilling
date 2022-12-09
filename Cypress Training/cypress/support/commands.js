@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 // ---------- Assignment on saucedemo website -----------
 Cypress.Commands.add('loginPage', (username_loc, name, password_loc, password, login_button_loc) => {
     cy.get(username_loc).type(name);
@@ -74,131 +72,58 @@ Cypress.Commands.add('open_Spicejet_website', () => {
     cy.url().should('include', 'https://www.spicejet.com/')
 })
 
-var Origin_city,Return_city,Travellers_selected,Destination_city,Departure_city,From_date,Departure_date,To_date,return_Date,Travellers_check_in_flight
-
 Cypress.Commands.add('selecting_the_flight_location', (mylocator,flightdata) => {
-
+    //selecting the Source city flight
     cy.wait(2000)
     cy
-    .get(mylocator.Origin_city_loc).eq(0).type(flightdata.Source).wait(1000) 
-    .get(mylocator.Origin_city_Dropdown_loc).contains("Bengaluru").click();     //selecting the Source city flight
-    cy.wait(1000)
+    .get(mylocator.Origin_city_loc).type(flightdata.Source_shortName).wait(2000)
+    .children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children().children(":nth-child(1)").contains(flightdata.SourceCity).click();
     
+    //selecting the Destination city flight
+    cy.wait(2000)
     cy
-    .get(mylocator.Departure_city_loc).eq(1).type(flightdata.Destination)
-    .get(mylocator.Departure_city_Dropdown_loc).contains("Ahmedabad").click();  //selecting the Destination city flight
+    .get(mylocator.Departure_city_loc).type(flightdata.Destination_shortName)
+    .children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children(":nth-child(2)").children().children(":nth-child(1)").contains(flightdata.DestinationCity).click();  
     cy.wait(1000)
 })
 
-Cypress.Commands.add('fetch_source_and_destination', (mylocator) => {       //Fetching the text of Source city
-    cy.get(mylocator.Origin_city_loc).eq(0).invoke('attr', 'value').then(text4 => {
-        Origin_city = text4.split(' ')[0];
-    })
-    cy.get(mylocator.Departure_city_loc).eq(1).invoke('attr', 'value').then(text4 => {      //Fetching the text of Destination city
-        Destination_city = text4.split(' ')[0];
-    })
-})
-    
-Cypress.Commands.add('Select_from_date', (mylocator) => {       //selecting the "from" date of the flight  
-
-    const day = moment().add(8,'day').format('D');
-    const month = moment().format('MMMM');
-    const year = moment().format('YYYY'); 
-
-    cy
-    .get(mylocator.month).invoke('attr', 'data-testid',`undefined-month-${month}-${year}`)
-    .find(mylocator.Date).children().children().children().contains(`${day}`).click()
-})
-
-Cypress.Commands.add('Select_to_date', (mylocator) => {     //selecting "to" date of the flight 
-
-    const day = moment().add(10,'day').format('D');
-    const month = moment().format('MMMM');
-    const year = moment().format('YYYY');
-
-    cy
-    .get(mylocator.month).invoke('attr', 'data-testid',`undefined-month-${month}-${year}`)
-    .get('.css-76zvg2.r-homxoj.r-ubezar.r-16dba41').contains(`${day}`).click()
-})  
-
-Cypress.Commands.add('No_of_passengers', (mylocator) => {       //fetching the text of number of passengers
-    cy.get(mylocator.No_of_travellers_loc).eq(2).invoke('text').then(text4=>{
-        Travellers_selected= text4;
-        cy.log(Travellers_selected);
-    })
-})
-
-Cypress.Commands.add('fetch_from_date', (mylocator) => {        //fetching "from" date of the flight 
-    cy.get(mylocator.From_date_loc).eq(0).invoke('text').then(text4=>{
-        From_date= text4;
-        cy.log(From_date)
-    })
-})
-
-Cypress.Commands.add('fetch_to_date', (mylocator) => {      //fetching "to" date of the flight 
-    cy.get(mylocator.To_date_loc).eq(1).invoke('text').then(text4=>{
-        To_date= text4;
-        cy.log(To_date)
-    })
-})
-
-Cypress.Commands.add('special_benifts', (mylocator) => {        //selecting the sprcial quota 
+//selecting the special quota for types of passenegers 
+Cypress.Commands.add('special_benefits', (mylocator) => {         
 
     cy.get(mylocator.Special_quota_loc).eq(2).click() 
 })
 
+//Buttons to proceed to Flightpage
 Cypress.Commands.add('buttons_to_proceed_to_flightpage', (mylocator) => {
 
-    cy.get(mylocator.Currency_loc).eq(3).contains("INR")
     cy.get(mylocator.Search_flight_button_loc).click();
     cy.get(mylocator.Terms_and_Conditions_loc).click();
     cy.get(mylocator.Continue_btn_loc).click();
 })
 
-Cypress.Commands.add('verifying_details_on_flightpage', (Flightpage_loc) => {       //verifying the details between the homepage and serached flightpage page
+//Verifying all the flight information
+Cypress.Commands.add('verifying_flightpage_information', (Flightpage_loc,flightdata,fromDate,toDate,roundtrip) => {       //verifying the details between the homepage and serached flightpage page
     
-    cy.get(Flightpage_loc.Return_check_loc).eq(1).invoke('text').then(text4 => {
-    Return_city = text4.split(' ')[5];
-    
-    cy.get(Flightpage_loc.Destination_check_loc).eq(0).invoke('text').then(text5 => {
-    Departure_city = text5.split(' ')[4];
-
-    cy.get(Flightpage_loc.Departure_date_check_loc).eq(0).invoke('text').then(text6 => {
-    Departure_date = text6
-    cy.log(Departure_date)
-        
-    cy.get(Flightpage_loc.Return_date_check_loc).eq(1).invoke('text').then(text7 => {
-    return_Date = text7;
-    cy.log(return_Date)
-
-    cy.get(Flightpage_loc.Passengers_in_flight).invoke('text').then(text8 => {
-    Travellers_check_in_flight = text8;
-        
-    expect(Origin_city).to.equal(Return_city)
-    expect(Destination_city).to.equal(Departure_city)
-
-    expect(From_date).to.equal(Departure_date)
-    expect(To_date).to.equal(return_Date)
-
-    expect(Travellers_selected).to.equal(Travellers_check_in_flight)
-        
-    })
-    })
-    })
-    })   
-})
+    cy.get(Flightpage_loc.FromAndTo_city_loc).eq(0).should('contain',flightdata.SourceCity).and('contain',flightdata.DestinationCity)
+    cy.get(Flightpage_loc.no_of_pax).should('contain',flightdata.Adult)
+    cy.get(Flightpage_loc.Departure_date_check_loc).eq(0).should('contain',fromDate)
+    if(roundtrip==2){
+    cy.get(Flightpage_loc.Return_date_check_loc).eq(1).should('contain',toDate)
+    }
 })
 
-Cypress.Commands.add('Count_Departure_flights', (Flightpage_loc) => {       //Count the number of flight from Source city to Destination city
-    cy.get(Flightpage_loc.Flights_in_number).eq(0).find('.css-1dbjc4n.r-13awgt0.r-18u37iz.r-b5h31w.r-1ah4tor.r-tvv088').then(listing => {
+//Counting the number of Departure Flights
+Cypress.Commands.add('Count_Departure_flights', (Flightpage_loc,flightdata) => {       //Count the number of flight from Source city to Destination city
+    cy.get(Flightpage_loc.OngoingFlights_loc).children(Flightpage_loc.particular_child).find(Flightpage_loc.particular_div).then(listing => {
     const listingCount = Cypress.$(listing).length;
-    cy.log("Number of ongoing flights from"+ " "+Origin_city+" = "+listingCount)  
+    cy.log("Number of ongoing flights from"+ " "+flightdata.SourceCity+" = "+listingCount)  
     })      
 })
 
-Cypress.Commands.add('Count_Returning_flights', (Flightpage_loc) => {       //Count the number of flight from Destination city to Source city
-    cy.get(Flightpage_loc.Flights_in_number).eq(1).find('.css-1dbjc4n.r-13awgt0.r-18u37iz.r-b5h31w.r-1ah4tor.r-tvv088').then(listing => {
+//Counting the number of Returning Flights
+Cypress.Commands.add('Count_Returning_flights', (Flightpage_loc,flightdata) => {       //Count the number of flight from Destination city to Source city
+    cy.get(Flightpage_loc.ReturningFlights_loc).children(Flightpage_loc.particularChild).find(Flightpage_loc.particular_div).then(listing => {
     const listingCount = Cypress.$(listing).length;
-    cy.log("Number of returning flights from "+" "+Destination_city+" = "+listingCount)
+    cy.log("Number of returning flights from "+" "+flightdata.DestinationCity+" = "+listingCount)
     })
 })

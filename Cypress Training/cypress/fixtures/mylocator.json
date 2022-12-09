@@ -9,19 +9,14 @@
 
   "oneway_trip_loc": "[data-testid='one-way-radio-button']",
   "round_trip_loc": "[data-testid='round-trip-radio-button']",
-  "Origin_city_loc": ".css-1cwyjr8.r-homxoj.r-ubezar.r-10paoce.r-13qz1uu",
-  "Origin_city_Dropdown_loc": ".r-knv0ih>.css-1dbjc4n.r-18u37iz",
-  "Departure_city_loc": ".css-1cwyjr8.r-homxoj.r-ubezar.r-10paoce.r-13qz1uu",
-  "Departure_city_Dropdown_loc": ".r-knv0ih>.css-1dbjc4n.r-18u37iz",
-  "From_date_loc": ".css-76zvg2.css-bfa6kz.r-homxoj.r-ubezar",
-  "month":".css-1dbjc4n.r-1mdbw0j.r-ymttw5.r-b2dl2.r-mzjzbw.r-wk8lta.r-tvv088",
-  "Date": ".css-1dbjc4n>.css-1dbjc4n.r-6koalj.r-18u37iz.r-d0pm55",
-  "To_date_loc": ".css-76zvg2.css-bfa6kz.r-homxoj.r-ubezar",
-  "No_of_travellers_loc": ".css-76zvg2.css-bfa6kz.r-homxoj.r-ubezar",
+  "Origin_city_loc": "[data-testid='to-testID-origin']",
+  "Departure_city_loc": "[data-testid='to-testID-destination']",
+  "From_date_loc": "[data-testid='departure-date-dropdown-label-test-id']",
+  "To_date_loc": "[data-testid='return-date-dropdown-label-test-id']",
+  "No_of_travellers_loc": "[data-testid='home-page-travellers']",
   "Currency_loc": ".css-76zvg2.css-bfa6kz.r-homxoj.r-ubezar",
   "Special_quota_loc": ".css-76zvg2.r-cqee49.r-n6v787.r-1ozqkpa",
-  "Search_flight_button_loc": ".css-1dbjc4n.r-1awozwy.r-z2wwpe.r-1loqt21.r-18u37iz.r-1777fci.r-1g94qm0.r-1w50u8q.r-ah5dr5.r-1otgn73",
+  "Search_flight_button_loc": "[data-testid='home-page-flight-cta']",
   "Terms_and_Conditions_loc": ".css-1dbjc4n.r-1tf5bf9.r-1777fci.r-1ww30s9",
   "Continue_btn_loc": ".css-1dbjc4n.r-1awozwy.r-z2wwpe.r-1loqt21.r-18u37iz.r-1777fci.r-d9fdf6.r-1w50u8q.r-ah5dr5.r-1otgn73"
-
 }

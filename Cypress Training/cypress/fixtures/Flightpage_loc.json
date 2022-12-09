@@ -1,10 +1,14 @@
 {
    "no_of_flights_loc": ".css-1dbjc4n.r-14lw9ot.r-3aj1re.r-18u37iz",
    "roundtrip_check_loc": ".css-76zvg2.css-16my406.r-homxoj.r-1s6pnzw.r-1iadsmv>.css-76zvg2.css-16my406.r-homxoj",
+   "FromAndTo_city_loc":".css-76zvg2.css-16my406.r-homxoj.r-1s6pnzw.r-1iadsmv",
    "Departure_date_check_loc": ".css-76zvg2.r-homxoj.r-ubezar.r-1n0xq6e",
    "Return_date_check_loc": ".css-76zvg2.r-homxoj.r-ubezar.r-1n0xq6e",
-   "Destination_check_loc": ".css-76zvg2.r-homxoj.r-adyw6z.r-1kfrs79",
    "Return_check_loc": ".css-76zvg2.r-homxoj.r-adyw6z.r-1kfrs79",
-   "Passengers_in_flight":".css-76zvg2.r-homxoj.r-n6v787.r-zso239",
-   "Flights_in_number":".css-1dbjc4n.r-1xdf14d"
+   "Destination_check_loc": ".css-76zvg2.r-homxoj.r-adyw6z.r-1kfrs79",
+   "no_of_pax":".css-76zvg2.r-homxoj.r-n6v787.r-zso239",
+   "particular_child": ".css-1dbjc4n.r-1xdf14d",
+   "particular_div":".css-1dbjc4n.r-14lw9ot.r-3aj1re.r-18u37iz",
+   "OngoingFlights_loc":"#list-results-section-0",
+   "ReturningFlights_loc":"#list-results-section-1"
 }

@@ -1,6 +1,10 @@
 {
-    "Source": "Ben",
-    "Destination": "Ah",
+    "Source_shortName": "Ben",
+    "Destination_shortName": "Ah",
+    "SourceCity": "Bengaluru",
+    "DestinationCity": "Ahmedabad",
+    "Adult":"1",
+    "Currency":"INR",
     
     "Special_quota_name":[
         "Family & Friends",

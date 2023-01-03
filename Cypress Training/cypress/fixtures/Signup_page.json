@@ -1,21 +1,33 @@
 {
-    "sign_in": ".fa.fa-lock",
     "name": "[data-qa='signup-name']",
     "new_email": "[data-qa='signup-email']",
+    "Signin_button": "a[href='/login']",
+    "Logout_button": "a[href='/logout']",
     "Signup_button": "[data-qa='signup-button']",
     "login_email":"[data-qa='login-email']",
     "login_password":"[data-qa='login-password']",
     "New_password":"#password",
     "login_button": "[data-qa='login-button']",
-    "radio_btn":"#id_gender1",
     "generate_password_loc":"#password",
-    "form": ["#first_name","#last_name","#password","#address1","#state","#city","#zipcode","#mobile_number"],
-    "formdata":["Shivam","Singh","qwerty","k-1 Laxmi Nagar","New Delhi","New Delhi","12345","8546327159"],
-    "dropdown":["#days","#months","#years"],
-    "dropdown_text": ["5","September","2021"],
+    "PersonalDetails_loc": ["#first_name","#last_name","#password","#address1","#state","#city","#zipcode","#mobile_number"],
+    "PersonalDetails_data":["Shivam","Singh","qwerty","k-1 Laxmi Nagar","New Delhi","New Delhi","12345","8546327159"],
+    "DateOfBirth":["#days","#months","#years"],
+    "DateOfBirth_value": ["5","September","2021"],
     "checkbox": ["#newsletter","#optin"],
+    "delete_account_btn": "a[href='/delete_account']",
+    "delete_text_loc": "[data-qa='account-deleted']",
+    "account_created_loc": "[data-qa='account-created']>b",
     "create_account_button": "[data-qa='create-account']",
-    "delete_account_btn": ".fa-trash-o",
-    "delete_text_loc": ".title>b",
-    "account_created_loc": "[data-qa='account-created']>b"
-    }
+    "continue_btn": "[data-qa='continue-button']",
+
+    "message_verification_text":
+    [
+        "New User Signup!",
+        "Account Deleted!",
+        "Your email or password is incorrect!",
+        "Email Address already exist!",
+        "Enter Account Information",
+        "Account Created!",
+        "Login to your account"
+    ]
+}

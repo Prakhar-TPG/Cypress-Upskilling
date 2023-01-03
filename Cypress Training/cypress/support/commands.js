@@ -130,76 +130,80 @@ Cypress.Commands.add('Count_Returning_flights', (Flightpage_loc,flightdata) => {
 
 // ---------- Assignment on Automtion exercise website -----------
 
-Cypress.Commands.add('open_aotomation_exercise_website', () => {
+Cypress.Commands.add('open_automation_exercise_website', () => {
     cy.visit('https://automationexercise.com/');
     cy.url().should('include','https://automationexercise.com/')
 })
 
-Cypress.Commands.add('Signin_button', (Signup_page) => {    
-    cy.get(Signup_page.sign_in).click()                   
-})
-
-Cypress.Commands.add('logout_button', (Signup_page) => {    
-    cy.get(Signup_page.sign_in).click()                   
-})
-
+//Generating the email and password of new user
+var result
 Cypress.Commands.add('New_signup_user', (Signup_page) => {
     
-    cy.get(".signup-form>h2").should('contain', "New User Signup!")
+    cy.get("#form").children().children().children(".col-sm-4").children(".signup-form").should('contain', Signup_page.message_verification_text[0])                            
     const username = 'Shivam';
-    const result = Math.random().toString(36).substring(2, 7) + '@asdfgh.com';
+    result = Math.random().toString(36).substring(2, 7) + '@asdfgh.com';
     cy.get(Signup_page.name).type(username)
     cy.get(Signup_page.new_email).type(result)
     cy.get(Signup_page.Signup_button).click()
-
 })
 
-Cypress.Commands.add('fill_dropdownform', (dropdown,dropdown_text) => {
+//filling the dateOfBirth
+Cypress.Commands.add('fill_dropdownform', (DateOfBirth,DateOfBirth_value) => {      
     
-    cy.get(dropdown).select(dropdown_text)
+    cy.get(DateOfBirth).select(DateOfBirth_value)
 })
 
-Cypress.Commands.add('fill_user_information', (form,formdata) => {
+//filling the Personal details
+Cypress.Commands.add('fill_user_information', (PersonalDetails_loc,PersonalDetails_data) => {       
     
-    cy.get(form).type(formdata) 
+    cy.get(PersonalDetails_loc).type(PersonalDetails_data) 
 })
 
-Cypress.Commands.add('newsletter_and_offers_signup', (checkbox) => {
+//Subscribe to newsletter and offers
+Cypress.Commands.add('newsletter_and_offers_signup', (checkbox) => {        //Subscribe to newsletter and offers
     
     cy.get(checkbox).click() 
 })
 
-Cypress.Commands.add('login', (Signup_page ) => {  
+//Valid Login Credentials
+Cypress.Commands.add('login', (Signup_page,check) => {      
+
+    if(check==1){
+        cy.get(Signup_page.login_email).type(result)
+        }   
+    else{      
     cy.get(Signup_page.login_email).type("6ke72@stwyscn.com"),                 
-    cy.get(Signup_page.login_password).type("qwerty"),                        
-    cy.get(Signup_page.login_button).click();                               
-    // cy.get(".navbar-nav>li").last().should('have.text', " Logged in as Shivam")
-    // cy.get(".fa-trash-o").click()
-    // cy.get(".title>b").should('have.text', "Account delated")
+    cy.get(Signup_page.login_password).type("qwerty")}       
+    cy.get(Signup_page.login_button).click();
 })
 
-Cypress.Commands.add('Deleting_the_account', (Signup_page) => {  
+//Deleting the existing account
+Cypress.Commands.add('Deleting_the_account', (Signup_page) => { 
+    
     cy.get(Signup_page.delete_account_btn).click()
-    cy.get(Signup_page.delete_text_loc).should('have.text', "Account Deleted!")
+    cy.get(Signup_page.delete_text_loc).should('have.text', Signup_page.message_verification_text[1])
 })
 
+//Verifying the Username
+Cypress.Commands.add('Username_verification', () => {
 
-Cypress.Commands.add('Username_verification', () => {  
-    cy.get(".navbar-nav>li").last().should('have.text', " Logged in as Shivam")
+    cy.get("#header").children().children().children().children(".col-sm-8").children().children().children().last().should('contain', " Logged in as Shivam")
 })
 
+//Invalid Login credentials
 Cypress.Commands.add('incorrect_credentials', (Signup_page) => {  
+    
     cy.get(Signup_page.login_email).type("qwui@stwyscn.com"),                 
     cy.get(Signup_page.login_password).type("qwerty"),                        
     cy.get(Signup_page.login_button).click(); 
-    cy.get(".login-form>form>p").should('contain', "Your email or password is incorrect!")                              
-
+    cy.get(Signup_page.login_password).next().should('contain', Signup_page.message_verification_text[2])                              
 })
 
+//Checking User already exists
 Cypress.Commands.add('verifying_user_already_exist', (Signup_page) => {  
+    
     cy.get(Signup_page.new_email).type("6ke72@stwyscn.com"),                 
     cy.get(Signup_page.name).type("Shivam")
     cy.get(Signup_page.Signup_button).click()
-    cy.get(".signup-form>form>p").should('contain', "Email Address already exist!")
-
+    cy.get(Signup_page.new_email).next().next().should('contain', Signup_page.message_verification_text[3])
 })

@@ -1,4 +1,0 @@
-{
-    "create_account_button": "[data-qa='create-account']",
-    "continue_btn": "[data-qa='continue-button']"
-}
